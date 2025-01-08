@@ -35,16 +35,19 @@
                         </div> 
                         <div class="mb-3">
                             <label for="" class="mb-2">Password*</label>
-                            <input type="password" name="password" id="password" class="form-control @error('password')is-invalid @enderror" placeholder="Enter Password">
-
+                            <div class="input-group">
+                                <input type="password" name="password" id="password" class="form-control @error('password')is-invalid @enderror" placeholder="Enter Password">
+                                <span class="input-group-text bg-white border" id="togglePassword">
+                                    <i class="fas fa-eye" id="toggleIcon"></i>
+                                </span>
+                            </div>
                             @error('password')
                                 <p class="invalid-feedback">{{ $message }}</p>
                             @enderror
-
                         </div> 
                         <div class="justify-content-between d-flex">
-                        <button class="btn btn-primary mt-2">Login</button>
-                            <a href="{{ route("account.forgotPassword") }}" class="mt-3">Forgot Password?</a>
+                            <button class="btn btn-primary mt-2">Login</button>
+                            <a href="{{ route('account.forgotPassword') }}" class="mt-3">Forgot Password?</a>
                         </div>
                     </form>                    
                 </div>
@@ -56,5 +59,20 @@
         <div class="py-lg-5">&nbsp;</div>
     </div>
 </section>
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordField = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        // Toggle the password field type
+        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField.setAttribute('type', type);
+
+        // Toggle the eye icon
+        toggleIcon.classList.toggle('fa-eye');
+        toggleIcon.classList.toggle('fa-eye-slash');
+    });
+</script>
 
 @endsection

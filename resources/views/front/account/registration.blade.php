@@ -22,12 +22,22 @@
                         </div> 
                         <div class="mb-3">
                             <label for="" class="mb-2">Password*</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
+                            <div class="input-group">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
+                                <span class="input-group-text bg-white border" id="togglePassword">
+                                    <i class="fas fa-eye" id="toggleIcon"></i>
+                                </span>
+                            </div>
                             <p></p>
                         </div> 
                         <div class="mb-3">
                             <label for="" class="mb-2">Confirm Password*</label>
-                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password">
+                            <div class="input-group">
+                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password">
+                                <span class="input-group-text bg-white border" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye" id="toggleConfirmIcon"></i>
+                                </span>
+                            </div>
                             <p></p>
                         </div> 
                         <button class="btn btn-primary mt-2">Register</button>
@@ -129,5 +139,33 @@ $('#registrationForm').submit(function(e){
         }
     });
 });
+
+
+document.getElementById('togglePassword').addEventListener('click', function () {
+    const passwordField = document.getElementById('password');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    // Toggle the password field type
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+
+    // Toggle the eye icon
+    toggleIcon.classList.toggle('fa-eye');
+    toggleIcon.classList.toggle('fa-eye-slash');
+});
+
+document.getElementById('toggleConfirmPassword').addEventListener('click', function () {
+    const confirmPasswordField = document.getElementById('confirm_password');
+    const toggleConfirmIcon = document.getElementById('toggleConfirmIcon');
+
+    // Toggle the confirm password field type
+    const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    confirmPasswordField.setAttribute('type', type);
+
+    // Toggle the eye icon
+    toggleConfirmIcon.classList.toggle('fa-eye');
+    toggleConfirmIcon.classList.toggle('fa-eye-slash');
+});
+
 </script>
 @endsection

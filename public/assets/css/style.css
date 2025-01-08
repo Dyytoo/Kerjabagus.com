@@ -4194,6 +4194,9 @@ textarea.form-control-lg {
 .border {
   border: 1px solid #dee2e6 !important;
 }
+.border#togglePassword, .border#toggleConfirmPassword{
+  cursor: pointer;
+}
 .border-0 {
   border: 0 !important;
 }
